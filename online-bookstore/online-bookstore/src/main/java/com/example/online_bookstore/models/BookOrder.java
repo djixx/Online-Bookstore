@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.Set;
 
 @Getter
@@ -13,7 +14,7 @@ import java.util.Set;
 public class BookOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "refUser", referencedColumnName = "id")
@@ -23,6 +24,10 @@ public class BookOrder {
     private Set<OrderItem> orderItems;
 
     private Double totalPrice;
+
+    private Date orderDate;
+
+    private Date orderFinishedDate;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
