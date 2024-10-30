@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface BookRepo extends JpaRepository<Book, Long> {
 
-    Optional<Book> findByTitle(String title);
+    Optional<Book> findByTitleContainingIgnoreCase(String title);
 
     List<Book> findByYear(int year);
 
