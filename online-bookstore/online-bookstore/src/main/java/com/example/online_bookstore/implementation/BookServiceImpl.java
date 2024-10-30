@@ -3,16 +3,16 @@ package com.example.online_bookstore.implementation;
 import com.example.online_bookstore.models.Book;
 import com.example.online_bookstore.repository.BookRepo;
 import com.example.online_bookstore.service.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
+@AllArgsConstructor
 @Component
 public class BookServiceImpl implements BookService {
 
-    @Autowired
     private BookRepo repo;
 
 

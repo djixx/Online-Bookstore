@@ -11,6 +11,4 @@ public interface OrderItemRepo extends JpaRepository<OrderItem,Long> {
 
     List<OrderItem> findByBookOrderId(Long orderId);
 
-
-
 }

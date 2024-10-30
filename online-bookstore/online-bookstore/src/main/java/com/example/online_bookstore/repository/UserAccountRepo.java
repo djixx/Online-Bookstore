@@ -18,8 +18,9 @@ public interface UserAccountRepo extends JpaRepository<UserAccount,Long> {
 
      List<UserAccount> findAllByOrderByUserIdAsc();
 
-
-    @Query("select u from UserAccount u where u.role != :ADMIN " +
+    @Query("select u " +
+            "from UserAccount u " +
+            "where u.role != :ADMIN " +
             "order by u.Id asc ")
     List<UserAccount> findAllNonAdmin(Role admin);
 }
