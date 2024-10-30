@@ -11,10 +11,12 @@ import java.util.Optional;
 public interface BookOrderService {
 
     List<BookOrder> findBookOrderAfterDate(Date date);
-    List<BookOrder> findBookOrderBeforeDate(Date date);
-    List<BookOrder> findBookOrderBetweenDates(Date startDate, Date endDate);
-    List<BookOrder> findCompletedBookOrder(Date date);
 
+    List<BookOrder> findBookOrderBeforeDate(Date date);
+
+    List<BookOrder> findBookOrderBetweenDates(Date startDate, Date endDate);
+
+    List<BookOrder> findCompletedBookOrder(Date date);
 
     boolean existsById(long id);
 
