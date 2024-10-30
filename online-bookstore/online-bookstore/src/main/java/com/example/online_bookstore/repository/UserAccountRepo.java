@@ -12,11 +12,12 @@ import java.util.Optional;
 @Repository
 public interface UserAccountRepo extends JpaRepository<UserAccount,Long> {
 
-     List<UserAccount> findByLastnameOrFirstname(String lastname , String firstname);
+     List<UserAccount> findByLastnameOrFirstname(String lastname, String firstname);
 
      Optional<UserAccount>findByUsername(String username);
 
      List<UserAccount> findAllByOrderByUserIdAsc();
+
 
     @Query("select u from UserAccount u where u.role != :ADMIN " +
             "order by u.Id asc ")
