@@ -4,17 +4,17 @@ import com.example.online_bookstore.enums.Role;
 import com.example.online_bookstore.models.UserAccount;
 import com.example.online_bookstore.repository.UserAccountRepo;
 import com.example.online_bookstore.service.UserAccountService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
+@AllArgsConstructor
 @Component
 public class UserAccountServiceImpl implements UserAccountService {
 
-    @Autowired
-    UserAccountRepo repo;
+    private UserAccountRepo repo;
 
 
     @Override

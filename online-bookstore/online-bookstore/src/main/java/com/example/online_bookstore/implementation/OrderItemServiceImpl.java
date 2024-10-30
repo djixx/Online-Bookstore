@@ -4,17 +4,17 @@ import com.example.online_bookstore.models.Category;
 import com.example.online_bookstore.models.OrderItem;
 import com.example.online_bookstore.repository.OrderItemRepo;
 import com.example.online_bookstore.service.OrderItemService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
+@AllArgsConstructor
 @Component
 public class OrderItemServiceImpl implements OrderItemService {
 
-    @Autowired
-    OrderItemRepo repo;
+    private OrderItemRepo repo;
 
     @Override
     public List<OrderItem> findByBookOrder(Long orderId) {

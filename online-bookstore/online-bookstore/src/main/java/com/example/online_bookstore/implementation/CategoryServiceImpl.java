@@ -3,21 +3,22 @@ package com.example.online_bookstore.implementation;
 import com.example.online_bookstore.models.Category;
 import com.example.online_bookstore.repository.CategoryRepo;
 import com.example.online_bookstore.service.CategoryService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
+@AllArgsConstructor
 @Component
 public class CategoryServiceImpl implements CategoryService {
 
-    @Autowired
-    CategoryRepo repo;
+
+    private CategoryRepo repo;
 
     @Override
     public List<Category> findByNameContainingIgnoreCase(String name) {
-        return repo.findByNameContainingIgnoreCase();
+        return repo.findByNameContainingIgnoreCase(name);
     }
 
     @Override

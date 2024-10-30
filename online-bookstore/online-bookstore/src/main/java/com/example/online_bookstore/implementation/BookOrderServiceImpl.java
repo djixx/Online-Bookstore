@@ -3,18 +3,17 @@ package com.example.online_bookstore.implementation;
 import com.example.online_bookstore.models.BookOrder;
 import com.example.online_bookstore.repository.BookOrderRepo;
 import com.example.online_bookstore.service.BookOrderService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
+@AllArgsConstructor
 @Component
-public class BookOrderServiceRepo implements BookOrderService {
+public class BookOrderServiceImpl implements BookOrderService {
 
-    @Autowired
-    BookOrderRepo repo;
+    private BookOrderRepo repo;
 
     @Override
     public List<BookOrder> findBookOrderAfterDate(Date date) {
@@ -33,7 +32,7 @@ public class BookOrderServiceRepo implements BookOrderService {
 
     @Override
     public List<BookOrder> findCompletedBookOrder(Date date) {
-        return repo.findByOrderFinishedDateBeforeAndOrderFinishedDateIsNotNull(date);
+        return repo.findCompletedOrdersBeforeDate(date);
     }
 
     @Override
