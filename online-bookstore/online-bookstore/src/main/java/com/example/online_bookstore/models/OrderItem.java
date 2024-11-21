@@ -1,31 +1,16 @@
 package com.example.online_bookstore.models;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.example.online_bookstore.persistence.BookEntity;
+import com.example.online_bookstore.persistence.BookOrderEntity;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-
-@Entity
-public class OrderItem {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @ManyToOne
-    @JoinColumn(name = "refBookOrder", referencedColumnName = "id")
-    private BookOrder bookOrder;
-
-    @ManyToOne
-    @JoinColumn(name = "refBook", referencedColumnName = "id")
-    private Book book;
+public class OrderItem extends Model{
 
     private int quantity;
 
     private double price;
+
+    private Long bookOrderId;
+
+    private Long bookId;
 }
+

@@ -1,7 +1,7 @@
 package com.example.online_bookstore.repository;
 
 import com.example.online_bookstore.enums.Role;
-import com.example.online_bookstore.models.UserAccount;
+import com.example.online_bookstore.persistence.UserAccountEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -10,17 +10,16 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserAccountRepo extends JpaRepository<UserAccount,Long> {
+public interface UserAccountRepo extends JpaRepository<UserAccountEntity,Long> {
 
-     List<UserAccount> findByLastnameOrFirstname(String lastname, String firstname);
+     List<UserAccountEntity> findByLastnameOrFirstname(String lastname, String firstname);
 
-     Optional<UserAccount>findByUsername(String username);
+     Optional<UserAccountEntity>findByUsername(String username);
 
-     List<UserAccount> findAllByOrderByUserIdAsc();
 
     @Query("select u " +
             "from UserAccount u " +
             "where u.role != :ADMIN " +
-            "order by u.Id asc ")
-    List<UserAccount> findAllNonAdmin(Role admin);
+            "order by u.id asc ")
+    List<UserAccountEntity> findAllNonAdmin(Role ADMIN);
 }

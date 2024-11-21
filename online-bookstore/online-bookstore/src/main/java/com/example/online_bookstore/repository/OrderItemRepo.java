@@ -1,14 +1,14 @@
 package com.example.online_bookstore.repository;
 
-import com.example.online_bookstore.models.OrderItem;
+import com.example.online_bookstore.persistence.OrderItemEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface OrderItemRepo extends JpaRepository<OrderItem,Long> {
+public interface OrderItemRepo extends JpaRepository<OrderItemEntity,Long> {
 
-    List<OrderItem> findByBookOrderId(Long orderId);
+    List<OrderItemEntity> findByBookOrderId(Long orderId);
 
 }

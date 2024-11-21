@@ -1,7 +1,6 @@
 package com.example.online_bookstore.implementation;
 
-import com.example.online_bookstore.models.Category;
-import com.example.online_bookstore.models.OrderItem;
+import com.example.online_bookstore.persistence.OrderItemEntity;
 import com.example.online_bookstore.repository.OrderItemRepo;
 import com.example.online_bookstore.service.OrderItemService;
 import lombok.AllArgsConstructor;
@@ -17,11 +16,11 @@ public class OrderItemServiceImpl implements OrderItemService {
     private OrderItemRepo repo;
 
     @Override
-    public List<OrderItem> findByBookOrder(Long orderId) {
+    public List<OrderItemEntity> findByBookOrder(Long orderId) {
         return List.of();
     }
     @Override
-    public List<OrderItem> getAll() {
+    public List<OrderItemEntity> getAll() {
         return repo.findAll();
     }
 
@@ -31,17 +30,17 @@ public class OrderItemServiceImpl implements OrderItemService {
     }
 
     @Override
-    public Optional<OrderItem> findById(long id) {
+    public Optional<OrderItemEntity> findById(long id) {
         return repo.findById(id);
     }
 
     @Override
-    public OrderItem create(OrderItem t) {
+    public OrderItemEntity create(OrderItemEntity t) {
         return repo.save(t);
     }
 
     @Override
-    public Optional<OrderItem> update(OrderItem t, long id) {
+    public Optional<OrderItemEntity> update(OrderItemEntity t, long id) {
         if(existsById(id)) {
             t.setId(id);
             return Optional.of(repo.save(t));

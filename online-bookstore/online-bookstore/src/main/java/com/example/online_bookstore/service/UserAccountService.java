@@ -1,7 +1,7 @@
 package com.example.online_bookstore.service;
 
 import com.example.online_bookstore.enums.Role;
-import com.example.online_bookstore.models.UserAccount;
+import com.example.online_bookstore.persistence.UserAccountEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,19 +10,21 @@ import java.util.Optional;
 @Service
 public interface UserAccountService {
 
-    List<UserAccount> findUserByFirstAndLastName(String lastname , String firstname);
-    Optional<UserAccount> findUserByUsername(String username);
-    List<UserAccount> findAllNonAdmin(Role admin);
+    List<UserAccountEntity> findUserByFirstAndLastName(String lastname , String firstname);
 
-    List<UserAccount> getAll();
+    Optional<UserAccountEntity> findUserByUsername(String username);
+
+    List<UserAccountEntity> findAllNonAdmin(Role admin);
+
+    List<UserAccountEntity> getAll();
 
     boolean existsById(long id);
 
-    Optional<UserAccount> findById(long id);
+    Optional<UserAccountEntity> findById(long id);
 
-    UserAccount create(UserAccount t);
+    UserAccountEntity create(UserAccountEntity t);
 
-    Optional<UserAccount> update(UserAccount t, long id);
+    Optional<UserAccountEntity> update(UserAccountEntity t, long id);
 
     void delete(long id);
 }

@@ -1,6 +1,6 @@
 package com.example.online_bookstore.implementation;
 
-import com.example.online_bookstore.models.Category;
+import com.example.online_bookstore.persistence.CategoryEntity;
 import com.example.online_bookstore.repository.CategoryRepo;
 import com.example.online_bookstore.service.CategoryService;
 import lombok.AllArgsConstructor;
@@ -17,12 +17,12 @@ public class CategoryServiceImpl implements CategoryService {
     private CategoryRepo repo;
 
     @Override
-    public List<Category> findByNameContainingIgnoreCase(String name) {
+    public List<CategoryEntity> findByNameContainingIgnoreCase(String name) {
         return repo.findByNameContainingIgnoreCase(name);
     }
 
     @Override
-    public List<Category> getAll() {
+    public List<CategoryEntity> getAll() {
         return repo.findAll();
     }
 
@@ -32,17 +32,17 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Optional<Category> findById(long id) {
+    public Optional<CategoryEntity> findById(long id) {
         return repo.findById(id);
     }
 
     @Override
-    public Category create(Category t) {
+    public CategoryEntity create(CategoryEntity t) {
         return repo.save(t);
     }
 
     @Override
-    public Optional<Category> update(Category t, long id) {
+    public Optional<CategoryEntity> update(CategoryEntity t, long id) {
         if(existsById(id)) {
             t.setId(id);
             return Optional.of(repo.save(t));

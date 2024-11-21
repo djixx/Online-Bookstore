@@ -1,6 +1,6 @@
 package com.example.online_bookstore.service;
 
-import com.example.online_bookstore.models.Category;
+import com.example.online_bookstore.persistence.CategoryEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,18 +9,18 @@ import java.util.Optional;
 @Service
 public interface CategoryService {
 
-    List<Category> findByNameContainingIgnoreCase(String name);
+    List<CategoryEntity> findByNameContainingIgnoreCase(String name);
 
-
-    List<Category> getAll();
+    List<CategoryEntity> getAll();
 
     boolean existsById(long id);
 
-    Optional<Category> findById(long id);
+    Optional<CategoryEntity> findById(long id);
 
-    Category create(Category t);
+    CategoryEntity create(CategoryEntity t);
 
-    Optional<Category> update(Category t, long id);
+    Optional<CategoryEntity> update(CategoryEntity t, long id);
 
     void delete(long id);
+
 }

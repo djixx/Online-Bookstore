@@ -1,7 +1,7 @@
 package com.example.online_bookstore.implementation;
 
 import com.example.online_bookstore.enums.Role;
-import com.example.online_bookstore.models.UserAccount;
+import com.example.online_bookstore.persistence.UserAccountEntity;
 import com.example.online_bookstore.repository.UserAccountRepo;
 import com.example.online_bookstore.service.UserAccountService;
 import lombok.AllArgsConstructor;
@@ -18,22 +18,22 @@ public class UserAccountServiceImpl implements UserAccountService {
 
 
     @Override
-    public List<UserAccount> findUserByFirstAndLastName(String lastname, String firstname) {
+    public List<UserAccountEntity> findUserByFirstAndLastName(String lastname, String firstname) {
         return repo.findByLastnameOrFirstname(lastname, firstname);
     }
 
     @Override
-    public Optional<UserAccount> findUserByUsername(String username) {
+    public Optional<UserAccountEntity> findUserByUsername(String username) {
         return repo.findByUsername(username);
     }
 
     @Override
-    public List<UserAccount> findAllNonAdmin(Role admin) {
-        return findAllNonAdmin(admin);
+    public List<UserAccountEntity> findAllNonAdmin(Role ADMIN) {
+        return findAllNonAdmin(ADMIN);
     }
 
     @Override
-    public List<UserAccount> getAll() {
+    public List<UserAccountEntity> getAll() {
         return repo.findAll();
     }
 
@@ -43,17 +43,17 @@ public class UserAccountServiceImpl implements UserAccountService {
     }
 
     @Override
-    public Optional<UserAccount> findById(long id) {
+    public Optional<UserAccountEntity> findById(long id) {
         return repo.findById(id);
     }
 
     @Override
-    public UserAccount create(UserAccount t) {
+    public UserAccountEntity create(UserAccountEntity t) {
         return repo.save(t);
     }
 
     @Override
-    public Optional<UserAccount> update(UserAccount t, long id) {
+    public Optional<UserAccountEntity> update(UserAccountEntity t, long id) {
         if(existsById(id)) {
             t.setId(id);
             return Optional.of(repo.save(t));
@@ -63,6 +63,7 @@ public class UserAccountServiceImpl implements UserAccountService {
 
     @Override
     public void delete(long id) {
+
         repo.deleteById(id);
     }
 }

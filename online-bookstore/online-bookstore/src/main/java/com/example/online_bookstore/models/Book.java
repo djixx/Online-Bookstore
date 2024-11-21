@@ -1,24 +1,11 @@
 package com.example.online_bookstore.models;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.Set;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-
-@Entity
-public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
+public class Book extends Model {
     private String title;
 
     private String authorFirstname;
@@ -33,9 +20,5 @@ public class Book {
 
     private int year;
 
-    @ManyToOne
-    private Category category;
-
-    @OneToMany(mappedBy = "book")
-    private Set<OrderItem> orderItems;
+    private Long categoryId;
 }

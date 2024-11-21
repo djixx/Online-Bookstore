@@ -1,6 +1,6 @@
 package com.example.online_bookstore.repository;
 
-import com.example.online_bookstore.models.BookOrder;
+import com.example.online_bookstore.persistence.BookOrderEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -9,13 +9,13 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface BookOrderRepo extends JpaRepository<BookOrder,Long> {
+public interface BookOrderRepo extends JpaRepository<BookOrderEntity,Long> {
 
-    List<BookOrder> findByStartDateAfter(Date date);
+    List<BookOrderEntity> findByOrderDateAfter(Date date);
 
-    List<BookOrder> findByStartDateBefore(Date date);
+    List<BookOrderEntity> findByOrderDateBefore(Date date);
 
-    List<BookOrder> findByStartDateBetween(Date startDate, Date endDate);
+    List<BookOrderEntity> findByOrderDateBetween(Date startDate, Date endDate);
 
     /**
      * Finds all completed book orders before a specified date.
@@ -30,7 +30,7 @@ public interface BookOrderRepo extends JpaRepository<BookOrder,Long> {
     @Query("SELECT b " +
             "FROM BookOrder b " +
             "WHERE b.orderFinishedDate < :date AND b.orderFinishedDate IS NOT NULL")
-    List<BookOrder> findCompletedOrdersBeforeDate(Date date);
+    List<BookOrderEntity> findCompletedOrdersBeforeDate(Date date);
 
 
 }

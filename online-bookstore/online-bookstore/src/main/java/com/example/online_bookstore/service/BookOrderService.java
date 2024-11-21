@@ -1,6 +1,6 @@
 package com.example.online_bookstore.service;
 
-import com.example.online_bookstore.models.BookOrder;
+import com.example.online_bookstore.persistence.BookOrderEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -10,21 +10,23 @@ import java.util.Optional;
 @Service
 public interface BookOrderService {
 
-    List<BookOrder> findBookOrderAfterDate(Date date);
+    List<BookOrderEntity> findBookOrderAfterDate(Date date);
 
-    List<BookOrder> findBookOrderBeforeDate(Date date);
+    List<BookOrderEntity> findBookOrderBeforeDate(Date date);
 
-    List<BookOrder> findBookOrderBetweenDates(Date startDate, Date endDate);
+    List<BookOrderEntity> findBookOrderBetweenDates(Date startDate, Date endDate);
 
-    List<BookOrder> findCompletedBookOrder(Date date);
+    List<BookOrderEntity> findCompletedBookOrder(Date date);
+
+    List<BookOrderEntity> getAll();
 
     boolean existsById(long id);
 
-    Optional<BookOrder> findById(long id);
+    Optional<BookOrderEntity> findById(long id);
 
-    BookOrder create(BookOrder t);
+    BookOrderEntity create(BookOrderEntity t);
 
-    Optional<BookOrder> update(BookOrder t, long id);
+    Optional<BookOrderEntity> update(BookOrderEntity t, long id);
 
     void delete(long id);
 }

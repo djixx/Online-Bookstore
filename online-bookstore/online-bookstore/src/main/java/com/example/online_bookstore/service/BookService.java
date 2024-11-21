@@ -1,6 +1,8 @@
 package com.example.online_bookstore.service;
 
 import com.example.online_bookstore.models.Book;
+import com.example.online_bookstore.models.Response;
+import com.example.online_bookstore.persistence.BookEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,19 +11,19 @@ import java.util.Optional;
 @Service
 public interface BookService {
 
-    Optional<Book> findByTitle(String title) ;
-    List<Book> findByYear(int year);
-    List<Book> findBooksByOrderYearDesc();
-    List<Book> findBooksAuthorLastName(String authorLastname);
-    List<Book> getAll();
+    Optional<BookEntity> findByTitle(String title) ;
+    List<BookEntity> findByYear(int year);
+    List<BookEntity> findBooksByOrderYearDesc();
+    List<BookEntity> findBooksAuthorLastName(String authorLastname);
+    List<BookEntity> getAll();
 
     boolean existsById(long id);
 
-    Optional<Book> findById(long id);
+    Optional<BookEntity> findById(long id);
 
-    Book create(Book t);
+    Response create(Book book);
 
-    Optional<Book> update(Book t, long id);
+    Optional<BookEntity> update(BookEntity t, long id);
 
     void delete(long id);
 

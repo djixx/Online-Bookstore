@@ -1,4 +1,4 @@
-package com.example.online_bookstore.models;
+package com.example.online_bookstore.persistence;
 
 import com.example.online_bookstore.enums.Gender;
 import com.example.online_bookstore.enums.Role;
@@ -17,7 +17,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 
-public class UserAccount {
+public class UserAccountEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -44,5 +44,5 @@ public class UserAccount {
     private Role role;
 
     @OneToMany(mappedBy = "userAccount")
-    private Set<BookOrder> bookOrders;
+    private Set<BookOrderEntity> bookOrderEntities;
 }

@@ -1,21 +1,25 @@
 package com.example.online_bookstore.repository;
 
-import com.example.online_bookstore.models.Book;
+import com.example.online_bookstore.persistence.BookEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface BookRepo extends JpaRepository<Book, Long> {
+public interface BookRepo extends JpaRepository<BookEntity, Long> {
 
-    Optional<Book> findByTitleContainingIgnoreCase(String title);
+    Optional<BookEntity> findByTitleContainingIgnoreCase(String title);
 
-    List<Book> findByYear(int year);
+    List<BookEntity> findByYear(int year);
 
-    List<Book> findAllByOrderByYearDesc();
+    List<BookEntity> findAllByOrderByYearDesc();
 
-    List<Book> findByAuthorLastName(String authorLastname);
+    List<BookEntity> findByAuthorLastname(String authorLastname);
+
+    @Query("select b from Book b where b.title = :title")
+    Optional<BookEntity> findByTitle(String title);
 
 }

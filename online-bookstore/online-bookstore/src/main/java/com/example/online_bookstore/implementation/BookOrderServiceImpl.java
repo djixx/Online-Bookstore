@@ -1,6 +1,6 @@
 package com.example.online_bookstore.implementation;
 
-import com.example.online_bookstore.models.BookOrder;
+import com.example.online_bookstore.persistence.BookOrderEntity;
 import com.example.online_bookstore.repository.BookOrderRepo;
 import com.example.online_bookstore.service.BookOrderService;
 import lombok.AllArgsConstructor;
@@ -16,23 +16,28 @@ public class BookOrderServiceImpl implements BookOrderService {
     private BookOrderRepo repo;
 
     @Override
-    public List<BookOrder> findBookOrderAfterDate(Date date) {
-        return repo.findByStartDateAfter(date);
+    public List<BookOrderEntity> findBookOrderAfterDate(Date date) {
+        return repo.findByOrderDateAfter(date);
     }
 
     @Override
-    public List<BookOrder> findBookOrderBeforeDate(Date date) {
-        return repo.findByStartDateBefore(date);
+    public List<BookOrderEntity> findBookOrderBeforeDate(Date date) {
+        return repo.findByOrderDateBefore(date);
     }
 
     @Override
-    public List<BookOrder> findBookOrderBetweenDates(Date startDate, Date endDate) {
-        return repo.findByStartDateBetween(startDate, endDate);
+    public List<BookOrderEntity> findBookOrderBetweenDates(Date startDate, Date endDate) {
+        return repo.findByOrderDateBetween(startDate, endDate);
     }
 
     @Override
-    public List<BookOrder> findCompletedBookOrder(Date date) {
+    public List<BookOrderEntity> findCompletedBookOrder(Date date) {
         return repo.findCompletedOrdersBeforeDate(date);
+    }
+
+    @Override
+    public List<BookOrderEntity> getAll() {
+        return repo.findAll();
     }
 
     @Override
@@ -41,17 +46,17 @@ public class BookOrderServiceImpl implements BookOrderService {
     }
 
     @Override
-    public Optional<BookOrder> findById(long id) {
+    public Optional<BookOrderEntity> findById(long id) {
         return repo.findById(id);
     }
 
     @Override
-    public BookOrder create(BookOrder t) {
+    public BookOrderEntity create(BookOrderEntity t) {
         return repo.save(t);
     }
 
     @Override
-    public Optional<BookOrder> update(BookOrder t, long id) {
+    public Optional<BookOrderEntity> update(BookOrderEntity t, long id) {
         if(existsById(id)) {
             t.setId(id);
             return Optional.of(repo.save(t));

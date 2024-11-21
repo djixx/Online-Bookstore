@@ -1,6 +1,6 @@
 package com.example.online_bookstore.service;
 
-import com.example.online_bookstore.models.OrderItem;
+import com.example.online_bookstore.persistence.OrderItemEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,17 +8,17 @@ import java.util.Optional;
 
 @Service
 public interface OrderItemService {
-    List<OrderItem> findByBookOrder(Long orderId);
+    List<OrderItemEntity> findByBookOrder(Long orderId);
 
-    List<OrderItem> getAll();
+    List<OrderItemEntity> getAll();
 
     boolean existsById(long id);
 
-    Optional<OrderItem> findById(long id);
+    Optional<OrderItemEntity> findById(long id);
 
-    OrderItem create(OrderItem t);
+    OrderItemEntity create(OrderItemEntity t);
 
-    Optional<OrderItem> update(OrderItem t, long id);
+    Optional<OrderItemEntity> update(OrderItemEntity t, long id);
 
     void delete(long id);
 }
